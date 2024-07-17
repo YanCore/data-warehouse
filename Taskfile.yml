@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  setup:
+    cmds:
+      - python -m venv .venv
+      - source .venv/bin/activate
+      - pip install -r requirements.txt
+      - dbt deps
+    silent: true
+  docs-server:
+    cmds:
+      - dbt docs generate
+      - dbt docs serve --port 3081
+    silent: true

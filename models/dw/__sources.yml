@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: ods
+    schema: "ods"
+    description: E-commerce data
+    tables:
+      - name: customers
+      - name: order_items
+      - name: orders
