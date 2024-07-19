@@ -29,6 +29,7 @@ flags:
 vars:
   truncate_timespan_to: "{{ current_timestamp() }}"
   "dbt_date:time_zone": "Asia/Shanghai"
+  re_data:save_test_history: true
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

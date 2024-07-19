@@ -8,8 +8,22 @@ tasks:
       - pip install -r requirements.txt
       - dbt deps
     silent: true
-  docs-server:
+  docs-update:
     cmds:
       - dbt docs generate
-      - dbt docs serve --port 3081
+    silent: true
+  docs-server:
+    cmds:
+      - task: docs-update
+      - dbt docs serve --port 3180
+    silent: true
+  re-data-update:
+    cmds:
+      # - dbt run --models package:re_data --vars "{'re_data:time_window_start': '2016-09-01 00:00:00','re_data:time_window_end': '2016-09-02 00:00:00'}"
+      - re_data overview generate --start-date 2016-01-01 --interval days:1
+    silent: true
+  re-data-server:
+    cmds:
+      - task: re-data-update
+      - re_data overview serve --port 3185
     silent: true
